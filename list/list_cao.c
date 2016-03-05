@@ -30,6 +30,7 @@ Node *app_end_list_node(List * , Node*);
 List *init_list();
 Node* find_node_by_value(List*, void *);
 void append_to_list(List* , Node* );
+void delete_node(List* list, Node* node);
 void print_list(List*);
 
 int main(int argc, char **argv) {
@@ -41,7 +42,9 @@ int main(int argc, char **argv) {
     }
     print_list(list);
     printf("%p", find_node_by_value(list, "is "));
-
+    Node * to_delete_node = find_node_by_value(list, "is ");
+    delete_node(list, to_delete_node);
+    print_list(list);
     return EXIT_SUCCESS;
 }
 
@@ -92,7 +95,17 @@ Node* find_node_by_value(List *list, void *value){
     return NULL;
 }
 
-
+void delete_node(List* list, Node* node){
+    Node* pre = list -> header;
+    while(pre -> next != node){
+        pre = pre -> next;
+    }
+    printf("I found %s\n", pre->next->value);
+    pre -> next = node -> next;
+    node -> next = NULL;
+    list -> length -= 1;
+    free(node);
+}
 
 /* Print the list out to the console */
 void print_list(List* list){
