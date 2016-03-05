@@ -1,3 +1,10 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Description:
+ *                                                                             *
+ * Author: Jingchen Wei (Jason)                                                   *
+ *                                                                             *
+ * Other source files, if any, one per line, starting on the next line:        *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 public class linkedList {
 	Node head;
