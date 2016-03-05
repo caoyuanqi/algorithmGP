@@ -6,6 +6,7 @@ public class linkedList {
 	public class Node {
 		int data;
 		Node next;
+		Node previous;
 		
 		public Node(int data) {
 			this.data = data;
@@ -19,6 +20,7 @@ public class linkedList {
 		}
 		else {
 			current.next = new Node(data);
+			current.next.previous = current; 
 			current = current.next;
 		}
 	}
