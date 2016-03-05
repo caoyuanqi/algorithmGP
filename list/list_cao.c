@@ -28,6 +28,7 @@ Node *create_empty_node();
 Node *create_node(void *value);
 Node *app_end_list_node(List * , Node*);
 List *init_list();
+Node* find_node_by_value(List*, void *);
 void append_to_list(List* , Node* );
 void print_list(List*);
 
@@ -39,6 +40,8 @@ int main(int argc, char **argv) {
         append_to_list(list, node);
     }
     print_list(list);
+    printf("%p", find_node_by_value(list, "is "));
+
     return EXIT_SUCCESS;
 }
 
@@ -77,12 +80,27 @@ void append_to_list(List* list, Node* node){
     list -> length += 1;
 }
 
+Node* find_node_by_value(List *list, void *value){
+    int len = list -> length;
+    Node *node = list -> header;
+    while(node -> next != NULL){
+        node = node -> next;
+        if(node -> value == value){
+            return node;
+        }
+    }
+    return NULL;
+}
+
+
+
 /* Print the list out to the console */
 void print_list(List* list){
     int length = list -> length;
     Node * header = list -> header;
     for (int i = 0; i < length; i++) {
         header = header -> next;
-        printf("%s\n", header -> value );
+        printf("%s", header -> value );
     }
+    printf("\n");
 }
